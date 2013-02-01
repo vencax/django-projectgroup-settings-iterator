@@ -13,6 +13,6 @@ setup(
     description=desc,
     author='Vaclav Klecanda',
     author_email='vencax77@gmail.com',
-    url='https://github.com/vencax/django-mailserver',
+    url='https://github.com/vencax/django-projectgroup-settings-iterator',
     packages=find_packages()
 )
