@@ -68,7 +68,13 @@ class DjangoProjectRootTestCase(unittest.TestCase):
         open(os.path.join(settingsFolder, '__init__.py'), 'w').close()
         with open(os.path.join(settingsFolder,
                                '%s.py' % self.settings_module_name), 'w') as f:
-            cntnt = '''
+            f.write(self.settings_template % domain)
+
+
+class TestProjectrootSetting(DjangoProjectRootTestCase):
+
+    testDomains = ('example1.com', 'example2.com', 'sample2.net')
+    settings_template = '''
 SETTINGS = [
     ('%s', {
         'accountcallback': 'onAccountCallback',
@@ -76,12 +82,6 @@ SETTINGS = [
     }, 'domainwide_forward@address.com')
 ]
 '''
-            f.write(cntnt % domain)
-
-
-class TestProjectrootSetting(DjangoProjectRootTestCase):
-
-    testDomains = ('example1.com', 'example2.com', 'sample2.net')
 
     def test_settings(self):
         s = _DebugSettings()
