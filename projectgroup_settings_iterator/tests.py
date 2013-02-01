@@ -6,7 +6,7 @@ Created on May 9, 2012
 import unittest
 import os
 import shutil
-from .settings import Settings
+from projectgroup_settings_iterator.settings import Settings
 
 
 class _DebugSettings(Settings):
@@ -19,7 +19,7 @@ class _DebugSettings(Settings):
 
 class DjangoProjectRootTestCase(unittest.TestCase):
 
-    settings_module_name = 'test_settings.py'
+    settings_module_name = 'test_settings'
 
     def setUp(self):
         unittest.TestCase.setUp(self)
