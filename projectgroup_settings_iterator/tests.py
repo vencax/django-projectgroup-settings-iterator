@@ -20,6 +20,14 @@ class _DebugSettings(Settings):
 class DjangoProjectRootTestCase(unittest.TestCase):
 
     settings_module_name = 'test_settings'
+    settings_template = '''
+SETTINGS = [
+    ('%s', {
+        'accountcallback': 'onAccountCallback',
+        'whateverElse': 'onWhaeverElse'
+    }, 'domainwide_forward@address.com')
+]
+'''
 
     def setUp(self):
         unittest.TestCase.setUp(self)
@@ -74,14 +82,6 @@ class DjangoProjectRootTestCase(unittest.TestCase):
 class TestProjectrootSetting(DjangoProjectRootTestCase):
 
     testDomains = ('example1.com', 'example2.com', 'sample2.net')
-    settings_template = '''
-SETTINGS = [
-    ('%s', {
-        'accountcallback': 'onAccountCallback',
-        'whateverElse': 'onWhaeverElse'
-    }, 'domainwide_forward@address.com')
-]
-'''
 
     def test_settings(self):
         s = _DebugSettings()
