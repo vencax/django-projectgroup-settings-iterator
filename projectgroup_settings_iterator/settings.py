@@ -54,6 +54,8 @@ class Settings(object):
             settingsFldr = os.path.join(projPath, self.path_to_settings)
             try:
                 proj_sett = self._load_project_module(settingsFldr)
+                logging.debug('found %s in %s' % \
+                    (self.settings_module_name, settingsFldr))
                 self.process_project_settins(proj_sett, projPath)
             except ImportError:
                 logging.debug('no %s in %s' % \
